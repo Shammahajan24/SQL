@@ -130,3 +130,18 @@ DESC Student;
 ALTER TABLE Student ADD COLUMN gender varchar(30),ADD COLUMN city varchar(30);
 ALTER TABLE Student ADD COLUMN seher varchar(30) FIRST;
 ALTER TABLE Student ADD COLUMN phone_no int after last_name;
+ALTER TABLE Student CHANGE COLUMN first_name f_name varchar(30);
+ALTER TABLE Student MODIFY COLUMN Roll_no varchar(30);
+ALTER TABLE Student DROP COLUMN seher;                   -- change apan name sathi vaprto pan modify property sathi vaprtat
+
+-- New table 
+  create table CAR (          -- ya sathi new table add karto
+   Model VARCHAR(30),
+   Years date  
+);
+DESC CAR;
+ALTER TABLE CAR ADD COLUMN C_id INT FIRST;
+ALTER TABLE CAR ADD COLUMN Car_name VARCHAR(30) AFTER Model;
+ALTER TABLE CAR CHANGE COLUMN Model Car_Model VARCHAR(30);
+ALTER TABLE CAR ADD COLUMN engine_type VARCHAR(30),ADD COLUMN Car_color VARCHAR(30) AFTER Car_name;
+ALTER TABLE CAR DROP COLUMN C_id;
