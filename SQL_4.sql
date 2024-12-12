@@ -46,12 +46,25 @@ select * from xx where salray < max(salary);
 
 select name ,min(salary) from xx group by name having max(salary)>8;
 
-select salary from xx
-order by salary desc
-limit 1 offset 2;
+
 
 SELECT MAX(salary) AS second_highest_salary
 FROM xx
 WHERE salary < (SELECT MAX(salary) FROM xx);
 
 update xx set salary=16 where salary=15; 
+
+select * from xx;
+-- Group by
+select sum(salary) from xx;
+select name,sum(salary) from xx group by name;
+select name,sum(salary) from xx group by name having sum(salary)>40;
+select name,sum(salary) from xx group by name having max(salary)>9;
+  -- ---------------Distinct 
+select distinct salary from xx
+order by salary desc
+limit 1 offset 1;
+-- ---------Subquery with aggregate function  
+SELECT MAX(salary) AS second_highest_salary
+FROM xx
+WHERE salary < (SELECT MAX(salary) FROM xx);
