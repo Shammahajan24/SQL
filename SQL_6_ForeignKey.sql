@@ -25,7 +25,7 @@ create table avengers_enemy(
   enemy_name varchar(30),
   ar_id int,
   FOREIGN KEY (ar_id) REFERENCES avengers(ar_id)
- 
+  ON UPDATE CASCADE
 );                                                                                                                                                                                                                                                                                                                                                                                                                    
 
 

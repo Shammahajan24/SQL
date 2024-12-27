@@ -9,7 +9,7 @@ CREATE PROCEDURE AvengerAssemble()
 BEGIN
 
 DROP TABLE IF EXISTS Avengers;
-
+ 
 
 create table avengers(
   ar_id int PRIMARY key AUTO_INCREMENT,
@@ -35,3 +35,45 @@ create table avengers(
   DELIMITER ;
 
 CALL AvengerAssemble();
+
+-- ------------In Parameters----------------------------------------
+DELIMITER //
+
+CREATE Procedure GetAvengerByCity(IN city_name VARCHAR(30))
+BEGIN
+
+SELECT * FROM Avengers where city= city_name;
+
+END//
+DELIMITER ;
+
+CALL GetAvengerByCity('florida'); 
+
+-- ------------Out Parameters----------------------------------------
+DELIMITER //
+
+CREATE Procedure CountAvengerByCity(IN city_name VARCHAR(30),OUT avenger_count INT)
+BEGIN
+
+SELECT count(*) into avenger_count FROM avengers where city= city_name;
+
+END//
+DELIMITER ;
+
+CALL CountAvengerByCity('florida',@avenger_count);
+select @avenger_count; 
+
+
+-- ------------In-Out Parameters----------------------------------------
+DELIMITER //
+
+CREATE Procedure UpdateHeroicName(INOUT hero_name VARCHAR(30))
+BEGIN
+
+set hero_name=concat('I am', hero_name);
+
+END//
+DELIMITER ;
+SET @hero_name="Sham";
+CALL UpdateHeroicName(@hero_name);
+select @hero_name; 
